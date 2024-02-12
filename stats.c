@@ -43,8 +43,9 @@ void print_array(unsigned char test[], int length) {
  *  @param length An integer containing the length of the array.
  */
     for (int i = 0; i < length; i++) {
-        printf("%d\n", test[i]);
+        printf("%d ", test[i]);
     }
+    printf("\n");
 }
 
 
@@ -158,9 +159,12 @@ void main() {
     for (int i = 0; i < SIZE; i++) {
         sorted[i] = test[i];
     }
-    sort_array(test, sorted);
-    print_statistics(test, sorted);
+    printf("Print Array: \n");
     print_array(test, SIZE);
+    sort_array(test, sorted);
+    printf("Sorted array:\n");
+    print_array(sorted, SIZE);
+    print_statistics(test, sorted);
 
 }
 
