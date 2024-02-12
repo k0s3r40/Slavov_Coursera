@@ -36,16 +36,24 @@
 #define SIZE (40)
 
 
-void print_array(unsigned char test[SIZE], int length) {
-    //    Given an array of data and a length, prints the array to the screen
+void print_array(unsigned char test[], int length) {
+/**
+ *  @brief Given an array of data and a length, prints the array to the screen.
+ *  @param test An array of unsigned char to be printed.
+ *  @param length An integer containing the length of the array.
+ */
     for (int i = 0; i < length; i++) {
         printf("%d\n", test[i]);
     }
 }
 
 
-int find_median(unsigned char test[SIZE]) {
-//    Given an array of data and a length, returns the median value
+int find_median(unsigned char test[]) {
+/**
+ *  @brief Given an array of data and a length, returns the median value.
+ *  @param test An array of unsigned char.
+ *  @return the median of the array.
+ */
     int sum = 0;
     for (int i = 0; i < SIZE; i++) {
         sum += test[i];
@@ -53,8 +61,13 @@ int find_median(unsigned char test[SIZE]) {
     return sum / SIZE;
 }
 
-int find_mean(unsigned char sorted[SIZE]) {
-//    Given an array of data and a length, returns the mean
+int find_mean(unsigned char sorted[]) {
+/**
+ *  @brief Given an array of data and a length, returns the mean.
+ *  @param test An array of unsigned char.
+ *  @return the mean of the array.
+ */
+
     if (SIZE % 2 == 0) {
         return (sorted[(SIZE / 2) - 1] + sorted[SIZE / 2]) / 2;
     } else {
@@ -63,8 +76,12 @@ int find_mean(unsigned char sorted[SIZE]) {
 
 }
 
-int find_maximum(unsigned char test[SIZE]) {
-//    Given an array of data and a length, returns the maximum
+int find_maximum(unsigned char test[]) {
+/**
+ *  @brief Given an array of data and a length, returns the maximum.
+ *  @param test An array of unsigned char.
+ *  @return the max value in an array.
+ */
     int max = test[0];
     for (int i = 0; i < SIZE; i++) {
         if (test[i] > max) {
@@ -75,7 +92,11 @@ int find_maximum(unsigned char test[SIZE]) {
 }
 
 int find_minimum(unsigned char test[SIZE]) {
-    //    Given an array of data and a length, returns the minimum
+/**
+ *  @brief Given an array of data and a length, returns the minimum.
+ *  @param test An array of unsigned char.
+ *  @return the minimal value in an array.
+ */
     int min = test[0];
     for (int i = 0; i < SIZE; i++) {
         if (test[i] < min) {
@@ -86,14 +107,26 @@ int find_minimum(unsigned char test[SIZE]) {
 }
 
 int compare(const void *a, const void *b) {
+/**
+ * @brief Comparison function for sorting an array of unsigned chars in descending order.
+ *
+ * @param a A pointer to the first element for comparison.
+ * @param b A pointer to the second element for comparison.
+ * @return An integer less than, equal to, or greater than zero if the element pointed to by 'a'
+ *         is found, respectively, to be greater than, equal to, or less than the element pointed to by 'b'.
+ */
     unsigned char val1 = *(const unsigned char *) a;
     unsigned char val2 = *(const unsigned char *) b;
     return (val2 - val1);
 }
 
-void sort_array(unsigned char test[SIZE], unsigned char sorted[SIZE]) {
-    //    Given an array of data and a length, sorts the array from largest to smallest.
-    //    (The zeroth Element should be the largest value, and the last element (n-1) should be the smallest value. )
+void sort_array(unsigned char test[], unsigned char sorted[]) {
+/**
+ * @brief Sorts an array with quicksort
+ *
+ * @param test An unsigned char array.
+ * @param sorted An empty unsigned array where the sorted elements will be stored.
+ */
     for (int i = 0; i < SIZE; i++) {
         sorted[i] = test[i];
     }
@@ -101,8 +134,12 @@ void sort_array(unsigned char test[SIZE], unsigned char sorted[SIZE]) {
     qsort(sorted, SIZE, sizeof(unsigned char), compare); // Sort the array
 }
 
-void print_statistics(unsigned char test[SIZE], unsigned char sorted[SIZE]) {
-    //    A function that prints the statistics of an array including minimum, maximum, mean, and median.
+void print_statistics(unsigned char test[], unsigned char sorted[]) {
+    /**
+     * @brief A function that prints the statistics of an array including minimum, maximum, mean, and median.
+     * @test - An unsigned char array containing the original array.
+     * @sorted - An unsigned char array sorted in descending order.
+     */
     printf("Minimum: %d\n", find_minimum(test));
     printf("Maximum: %d\n", find_maximum(test));
     printf("Mean: %d\n", find_mean(sorted));
